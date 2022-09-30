@@ -1,0 +1,23 @@
+#experienceDev {
+  padding: 100px;
+  cursor: pointer;
+  transition-duration: 0.5s;
+  -webkit-transition-duration: 0.5s;
+}
+#experienceDev:hover {
+  opacity: 0.9;
+}
+
+#experienceDev p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+}
+#experienceDev p {
+  font-size: smaller;
+  line-height: 1rem;
+}
