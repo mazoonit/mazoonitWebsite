@@ -1,3 +1,5 @@
+let color="#168aad";
+color="#396EB0"
 export const experiences = [
   {
     from: "Nov 2021",
@@ -6,7 +8,7 @@ export const experiences = [
     company: "Egyptian Armed Forces",
     positionX: 120,
     positionZ: 1200,
-    color: "#FA7070",
+    color: color,
     component: () => (
       <>
         <p>
@@ -40,7 +42,7 @@ export const experiences = [
     company: "Spiritude",
     positionX: -120,
     positionZ: 1100,
-    color: "#6E85B7",
+    color: color,
     component: () => (
       <>
         <p>
@@ -69,7 +71,7 @@ export const experiences = [
     company: "Kernelz",
     positionX: 120,
     positionZ: 1000,
-    color: "#7FB77E",
+    color: color,
     component: () => (
       <>
         <p>
@@ -103,7 +105,7 @@ export const experiences = [
     company: "Etgo",
     positionX: -120,
     positionZ: 900,
-    color: "#FFAB4C",
+    color: color,
     component: () => (
       <dev style={{ textAlign: "left" }}>
         <p>
@@ -128,7 +130,7 @@ export const experiences = [
     company: "Freelance",
     positionX: 120,
     positionZ: 800,
-    color: "#3E8E7E",
+    color: color,
     component: () => (
       <dev>
         <p>I had two major projects</p>

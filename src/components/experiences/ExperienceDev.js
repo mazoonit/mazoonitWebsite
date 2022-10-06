@@ -26,19 +26,24 @@ export default function ExperienceDev({ scarabPosition }) {
       <div
         id="experienceDev"
         style={{
-          height: "350px",
+          height: "400px",
           width: "500px",
           borderRadius: "5px",
           backgroundColor: color,
           padding: "20px",
+          paddingTop: "4px",
           position: "absolute",
           right: positionX == -120 && conditionI ? 100 : null,
           left: positionX == 120 && conditionI ? 100 : null,
           top: condition ? 150 : -500,
-          opacity: 0.7,
+          opacity: 0.9,
           zIndex: 5,
+          color: "#fff",
         }}
       >
+        <div style={{ textAlign: "center" }}>
+          <img src="/apy.png" style={{ height: "40px", marginBottom: "5px" }} />
+        </div>
         <div style={{ marginBottom: "10px" }}>
           <h4>{title}</h4>
           <h5>

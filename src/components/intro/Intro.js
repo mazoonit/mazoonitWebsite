@@ -3,9 +3,13 @@ import Model from "../genericComponents/Model.js";
 import * as THREE from "three";
 import robotofont from "../../fonts/robotofont.json";
 export default function Intro() {
+  //let color = "#6a994e";
+  let color = "#168aad";
+  color = "#396EB0";
   return (
     <>
-      <group position={[-120, 15, 1300]}>
+      {/*
+      <group position={[-120, 10, 1300]}>
         <Text3D
           font={robotofont}
           size={30}
@@ -14,10 +18,11 @@ export default function Intro() {
           letterSpacing={-0.025}
         >
           {`Mazoonit!`}
-          {/*<meshPhongMaterial attach="material" color={"#555"} />*/}
+          {/*<meshPhongMaterial attach="material" color={"#555"} />
           <meshNormalMaterial />
         </Text3D>
       </group>
+    */}
       <group position={[120, 90, 1300]}>
         <Center top center>
           <Text3D
@@ -28,7 +33,7 @@ export default function Intro() {
             letterSpacing={-0.025}
           >
             {`Content Creator.`}
-            <meshPhongMaterial attach="material" color={"#ffcf40"} />
+            <meshPhongMaterial attach="material" color={color} />
           </Text3D>
         </Center>
       </group>
@@ -43,7 +48,7 @@ export default function Intro() {
           >
             {`Fullstack Web Developer!
                 `}
-            <meshPhongMaterial attach="material" color={"#ffcf40"} />
+            <meshPhongMaterial attach="material" color={color} />
           </Text3D>
         </Center>
       </group>
@@ -58,7 +63,7 @@ export default function Intro() {
           >
             {` Computer Science Graduate.
                 `}
-            <meshPhongMaterial attach="material" color={"#ffcf40"} />
+            <meshPhongMaterial attach="material" color={color} />
           </Text3D>
         </Center>
       </group>
@@ -72,15 +77,28 @@ export default function Intro() {
             letterSpacing={-0.025}
           >
             {`Egyptian.`}
-            <meshPhongMaterial attach="material" color={"#ffcf40"} />
+            <meshPhongMaterial attach="material" color={color} />
           </Text3D>
         </Center>
       </group>
 
       <Model
-        modelPath={"/akh.glb"}
-        position={new THREE.Vector3(0, 45, 1400)}
+        modelPath={"/nefertiti_bust.glb"}
+        position={new THREE.Vector3(-30, 20, 1400)}
+        scale={[80, 80, 80]}
+        rotation={[0, 0, 0]}
+      />
+      <Model
+        modelPath={"/egyptian_shop.glb"}
+        position={new THREE.Vector3(120, 0, 1350)}
         scale={[0.1, 0.1, 0.1]}
+        rotation={[0, 180, 0]}
+      />
+      <Model
+        modelPath={"/antena.glb"}
+        position={new THREE.Vector3(120, 60, 500)}
+        scale={[1, 1, 1]}
+        rotation={[0.3, 5, 0]}
       />
     </>
   );

@@ -17,10 +17,15 @@ import Intro from "./components/intro/Intro";
 import EgyptianScarab from "./components/egyptianScarab/EgyptianScarab";
 import Experiences from "./components/experiences/Experiences";
 import ExperienceDev from "./components/experiences/ExperienceDev";
+import Contact from "./components/contact/Contact";
+import ContactForm from "./components/contact/ContactForm";
+import Sky from "./components/sky/sky";
+import Content from "./components/contentCreation/Content";
+import ContentCard from "./components/contentCreation/ContentCard";
 
 import { Html, useProgress } from "@react-three/drei";
 
-function Loader() {
+function Loader({}) {
   const { progress } = useProgress();
   return (
     <>
@@ -33,9 +38,7 @@ function Loader() {
             <em>{progress.toFixed(0)} %</em>
           </strong>
         </p>
-        <p style={{ position: "absolute", bottom: 10}}>
-          @MAZOONIT
-        </p>
+        <p style={{ position: "absolute", bottom: 10 }}>@MAZOONIT</p>
       </div>
     </>
   );
@@ -43,14 +46,17 @@ function Loader() {
 
 softShadows();
 
-function Plane() {
+function Plane({ scarabPosition }) {
   const [ref] = usePlane(() => ({
     rotation: [-Math.PI / 2, 0, 0],
   }));
   return (
     <mesh rotation={[-Math.PI / 2, 0, 0]}>
       <planeBufferGeometry attach="geometry" args={[300, 3000]} />
-      <meshLambertMaterial attach="material" color="#fff" />
+      <meshLambertMaterial
+        attach="material"
+        color={scarabPosition.z > 700 ? "lightblue" : "lightgreen"}
+      />
     </mesh>
   );
 }
@@ -86,13 +92,27 @@ const positionsReducer = (state, action) => {
         );
       }
       return state;
+    case "FLY":
+      if (state.scarabPosition.y < 200) {
+        state.scarabPosition = state.scarabPosition.add(
+          new THREE.Vector3(0, 10, 0)
+        );
+      }
+      return state;
+    case "FALL":
+      if (state.scarabPosition.y > 10) {
+        state.scarabPosition = state.scarabPosition.add(
+          new THREE.Vector3(0, -10, 0)
+        );
+      }
+      return state;
 
     default:
       return state;
   }
 };
 
-function CanvasBased() {
+function CanvasBased({ loading }) {
   const [currentExperience, setCurrentExperience] = useState({
     flag: false,
   });
@@ -106,6 +126,7 @@ function CanvasBased() {
   useEffect(() => {
     const downHandler = (e) => {
       //ArrowDown,ArrowUp,ArrowLeft,ArrowRight
+      console.log(loading);
       if (e.key === "ArrowDown") {
         let elem = document.getElementById("down");
         elem.classList.add("pressed");
@@ -136,6 +157,16 @@ function CanvasBased() {
           return (prevValue += 1);
         });
         positionsDispatch({ type: "MOVERIGHT" });
+      } else if (e.key == " ") {
+        setSimple((prevValue) => {
+          return (prevValue += 1);
+        });
+        positionsDispatch({ type: "FLY" });
+      } else if (e.key == "Enter") {
+        setSimple((prevValue) => {
+          return (prevValue += 1);
+        });
+        positionsDispatch({ type: "FALL" });
       }
     };
     const upHandler = () => {
@@ -155,6 +186,14 @@ function CanvasBased() {
 
   return (
     <>
+      <ContentCard
+        scarabPosition={positions.scarabPosition}
+        color={"#42855B"}
+      />
+      <ContactForm
+        scarabPosition={positions.scarabPosition}
+        color={"#42855B"}
+      />
       <ExperienceDev
         currentExperience={currentExperience}
         scarabPosition={positions.scarabPosition}
@@ -209,6 +248,22 @@ function CanvasBased() {
         />
         <Physics>
           {positions.scarabPosition.z > 1290 ? <Intro /> : null}
+          {positions.scarabPosition.z < 600 ? (
+            <Contact
+              positionX={60}
+              positionZ={200}
+              color={"#42855B"}
+              scarabPosition={positions.scarabPosition}
+            />
+          ) : null}
+          {positions.scarabPosition.z < 820 ? (
+            <Content
+              positionX={0}
+              positionZ={500}
+              color={"#42855B"}
+              scarabPosition={positions.scarabPosition}
+            />
+          ) : null}
           <Experiences
             scarabPosition={positions.scarabPosition}
             setCurrentExperience={setCurrentExperience}
@@ -218,7 +273,8 @@ function CanvasBased() {
             position={positions.scarabPosition}
             positions={positions}
           />
-          <Plane />
+
+          <Plane scarabPosition={positions.scarabPosition} />
         </Physics>
         <OrbitControls />
       </Canvas>
@@ -228,6 +284,7 @@ function CanvasBased() {
 function App() {
   return (
     <>
+      <Sky />
       <Suspense r3f fallback={<Loader />}>
         <CanvasBased />
       </Suspense>

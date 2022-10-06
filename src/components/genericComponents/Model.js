@@ -6,15 +6,11 @@ export default function Model({
   position = new THREE.Vector3(0, 0, 0),
   rotation = new THREE.Vector3(0, 0, -0.4),
   modelPath,
-  scale
+  scale,
 }) {
   const gltf = useLoader(GLTFLoader, modelPath);
   return (
-    <group
-      position={position}
-      scale={scale}
-      rotation={[0, 0, -0.4, 0]}
-    >
+    <group position={position} scale={scale} rotation={rotation}>
       <primitive object={gltf.scene} />
     </group>
   );
