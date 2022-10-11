@@ -27,7 +27,7 @@ export default function Content({
     >
       <Model
         modelPath={"/creation.glb"}
-        position={new THREE.Vector3(positionX, -50, positionZ)}
+        position={new THREE.Vector3(0, -50, 500)}
         scale={[35, 35, 35]}
         rotation={[0, 0, 0]}
       />

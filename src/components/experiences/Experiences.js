@@ -107,12 +107,12 @@ export default function Experiences({ scarabPosition, setCurrentExperience }) {
           dispatch(setExperience({ ...experience, flag: true }));
         }
         flag = true;
+        setRenderedExperiences((prevValue) => {
+          let n = prevValue;
+          n.push(experience);
+          return n;
+        });
       }
-      setRenderedExperiences((prevValue) => {
-        let n = prevValue;
-        n.push(experience);
-        return n;
-      });
     });
   }, [scarabPosition]);
   return (

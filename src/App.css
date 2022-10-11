@@ -75,3 +75,10 @@ body {
     transform: scale(2);
   }
 }
+.contactIcon {
+  transition: 0.5s;
+  color: #fff;
+}
+.contactIcon:hover {
+  color: lightgreen;
+}

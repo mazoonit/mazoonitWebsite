@@ -5,7 +5,7 @@ export default function Sky() {
       <div class="sub-container">
         <div id="useArrows" className="bounce-in">
           <h5>
-            Use Arrows,Space and Enter to move.
+            Use Keyboard Arrows,Space and Enter to move.
             <i class="fa-solid fa-rocket"></i>
           </h5>
         </div>
@@ -16,6 +16,13 @@ export default function Sky() {
           <div class="comet"></div>
         </div>
       </div>
+      <embed
+        src="/audio.mp3"
+        loop="true"
+        autostart="true"
+        width="2"
+        height="0"
+      />
     </div>
   );
 }

@@ -23,6 +23,8 @@ import Sky from "./components/sky/sky";
 import Content from "./components/contentCreation/Content";
 import ContentCard from "./components/contentCreation/ContentCard";
 import { Text } from "@react-three/drei";
+import { useLoader } from "@react-three/fiber";
+import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 
 import { Html, useProgress } from "@react-three/drei";
 
@@ -174,23 +176,63 @@ function CanvasBased({ loading }) {
     };
     window.addEventListener("keydown", downHandler);
     window.addEventListener("keyup", upHandler);
+    //load models
 
     return () => {
       window.removeEventListener("keydown", downHandler);
       window.removeEventListener("keyup", upHandler);
     };
   }, []);
+  //load models
+  const models = [
+    "/creation.glb",
+    "/antena.glb",
+    "/egyptian_shop.glb",
+    "/contact.glb",
+    "/nov21.glb",
+    "/sep21.glb",
+    "/aug20.glb",
+    "/dec19.glb",
+    "/jan19.glb",
+    "/aug17.glb",
+  ];
+  useLoader(GLTFLoader, models[0]);
+  useLoader(GLTFLoader, models[1]);
+  useLoader(GLTFLoader, models[2]);
+  useLoader(GLTFLoader, models[3]);
+  useLoader(GLTFLoader, models[4]);
+  useLoader(GLTFLoader, models[5]);
+  useLoader(GLTFLoader, models[6]);
+  useLoader(GLTFLoader, models[7]);
+  useLoader(GLTFLoader, models[8]);
+  useLoader(GLTFLoader, models[9]);
   const intros = [
-    /*
     {
-      title: "Fullstack Web Developer.",
-      xPosition: window.innerWidth / 2 - 100,
+      title: "01091719127",
+      right: 40,
       yPosition: 100,
-      background: "lightblue",
-      padding: "10px",
+      background: "#42855B",
+      padding: "15px",
       fontSize: "14px",
     },
-    */
+  ];
+  const links = [
+    {
+      link: "https://www.linkedin.com/in/mazen-soliman",
+      icon: "fa-linkedin",
+    },
+    {
+      link: "https://www.facebook.com/mazoonit",
+      icon: "fa-square-facebook",
+    },
+    {
+      link: "https://www.youtube.com/channel/UCFJlcq056HjyuWgj6osx9Xg",
+      icon: "fa-youtube",
+    },
+    {
+      link: "https://www.twitter.com/mazoonit",
+      icon: "fa-twitter",
+    },
   ];
   return (
     <>
@@ -200,22 +242,50 @@ function CanvasBased({ loading }) {
             style={{
               position: "absolute",
               top: intro.yPosition,
-              right: intro.xPosition + positions.scarabPosition.x,
+              right: positions.scarabPosition.z < 200 ? intro.right : -400,
+              left: intro.left,
               background: intro.background,
               padding: intro.padding,
               borderRadius: "10px",
-              opacity: 0.3,
-              display: positions.scarabPosition.z > 1390 ? "block" : "none",
+              opacity: 1,
+              width: 300,
+              height: 150,
+              display: "block",
+              zIndex: 100,
+              textAlign: "center",
+              transition: "0.3s",
             }}
-            className="bounce-in introDiv"
+            className="introDiv"
             id="introDiv"
           >
-            <p
-              className="introParagraph"
-              style={{ fontSize: intro.fontSize, margin: 0 }}
+            <a
+              href={"https://167.99.205.232:7070/resume"}
+              target="_blank"
+              style={{
+                display: "block",
+                margin: "5px",
+                fontSize: "20px",
+                textDecoration: "none",
+              }}
+              className={"contactIcon"}
             >
-              {intro.title}
-            </p>
+              DOWNLOAD RESUME
+            </a>
+            {links.map(({ link, icon }) => {
+              return (
+                <a
+                  href={link}
+                  target="_blank"
+                  style={{ margin: "5px", fontSize: "30px" }}
+                  className={"contactIcon"}
+                >
+                  <i className={"fa-brands " + icon}></i>
+                </a>
+              );
+            })}
+            <div style={{ textAlign: "right", marginTop: "0px" }}>
+              <img src="/bird.png" style={{ height: "50px" }} />
+            </div>
           </div>
         );
       })}
@@ -281,19 +351,23 @@ function CanvasBased({ loading }) {
           shadow-camera-bottom={-10}
         />
         <Physics>
-          <Intro />
-          <Contact
-            positionX={60}
-            positionZ={200}
-            color={"#42855B"}
-            scarabPosition={positions.scarabPosition}
-          />
-          <Content
-            positionX={0}
-            positionZ={500}
-            color={"#42855B"}
-            scarabPosition={positions.scarabPosition}
-          />
+          {positions.scarabPosition.z > 1300 ? <Intro /> : null}
+          {positions.scarabPosition.z < 600 ? (
+            <Contact
+              positionX={60}
+              positionZ={200}
+              color={"#42855B"}
+              scarabPosition={positions.scarabPosition}
+            />
+          ) : null}
+          {positions.scarabPosition.z < 800 ? (
+            <Content
+              positionX={0}
+              positionZ={500}
+              color={"#42855B"}
+              scarabPosition={positions.scarabPosition}
+            />
+          ) : null}
           <Experiences
             scarabPosition={positions.scarabPosition}
             setCurrentExperience={setCurrentExperience}
