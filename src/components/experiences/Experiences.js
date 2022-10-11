@@ -7,14 +7,22 @@ import { useSelector, useDispatch } from "react-redux";
 import { setExperience } from "../../redux/slices/experience";
 import { experiences } from "./experiencesObject";
 
-function Experience({ from, to, title, company, positionX, positionZ, color }) {
+function Experience({
+  from,
+  to,
+  title,
+  company,
+  modelName,
+  positionX,
+  positionZ,
+  color,
+}) {
   const [bool, setBool] = useState(0);
   const [size, setSize] = useState(10);
   return (
     <group
       onClick={() => {
         setBool((prevValue) => {
-          console.log(prevValue);
           if (prevValue == true) {
             setSize(10);
             return !prevValue;
@@ -25,6 +33,7 @@ function Experience({ from, to, title, company, positionX, positionZ, color }) {
         });
       }}
     >
+      {/*
       <group position={[positionX, 50, positionZ]}>
         <Center top center>
           <Text3D
@@ -39,6 +48,15 @@ function Experience({ from, to, title, company, positionX, positionZ, color }) {
           </Text3D>
         </Center>
       </group>
+      */}
+
+      <Model
+        modelPath={`/${modelName}`}
+        position={[positionX, 0, positionZ]}
+        scale={[20, 20, 20]}
+        rotation={[0, 0, 0]}
+      />
+      {/*
       <group position={[positionX, 35, positionZ]}>
         <Center top center>
           <Text3D
@@ -67,6 +85,7 @@ function Experience({ from, to, title, company, positionX, positionZ, color }) {
           </Text3D>
         </Center>
       </group>
+      */}
     </group>
   );
 }
@@ -88,12 +107,12 @@ export default function Experiences({ scarabPosition, setCurrentExperience }) {
           dispatch(setExperience({ ...experience, flag: true }));
         }
         flag = true;
-        setRenderedExperiences((prevValue) => {
-          let n = prevValue;
-          n.push(experience);
-          return n;
-        });
       }
+      setRenderedExperiences((prevValue) => {
+        let n = prevValue;
+        n.push(experience);
+        return n;
+      });
     });
   }, [scarabPosition]);
   return (

@@ -23,6 +23,7 @@ export default function Intro() {
         </Text3D>
       </group>
     */}
+      {/*
       <group position={[120, 90, 1300]}>
         <Center top center>
           <Text3D
@@ -52,7 +53,7 @@ export default function Intro() {
           </Text3D>
         </Center>
       </group>
-      <group position={[120, 50, 1380]}>
+      <group position={[120, 100, 1380]}>
         <Center top center>
           <Text3D
             font={robotofont}
@@ -61,27 +62,52 @@ export default function Intro() {
             lineHeight={0.5}
             letterSpacing={-0.025}
           >
-            {` Computer Science Graduate.
+            {` Computer Scientist.
                 `}
             <meshPhongMaterial attach="material" color={color} />
           </Text3D>
         </Center>
       </group>
+    
       <group position={[-120, 40, 1400]}>
         <Center top center>
           <Text3D
             font={robotofont}
             size={15}
-            height={3}
+            height={0}
             lineHeight={0.5}
             letterSpacing={-0.025}
           >
-            {`Egyptian.`}
+            {`Mazoonit.`}
             <meshPhongMaterial attach="material" color={color} />
           </Text3D>
         </Center>
       </group>
-
+      */}
+      <Model
+        modelPath={"/contentCreatorGreen.glb"}
+        position={new THREE.Vector3(-120,70, 1350)}
+        scale={[18, 18, 18]}
+        rotation={[0, 0, 0]}
+      />
+      <Model
+        modelPath={"/egyptianGeek.glb"}
+        position={new THREE.Vector3(-140, 0, 1400)}
+        scale={[18, 18, 18]}
+        rotation={[0, 0, 0]}
+      />
+      <Model
+        modelPath={"/computerScientist.glb"}
+        position={new THREE.Vector3(120, 50, 1400)}
+        scale={[18, 18, 18]}
+        rotation={[0, 0, 0]}
+      />
+      <Model
+        modelPath={"/fullstack.glb"}
+        position={new THREE.Vector3(120, 30, 1300)}
+        scale={[20, 20, 20]}
+        rotation={[0, 0, 0]}
+      />
       <Model
         modelPath={"/nefertiti_bust.glb"}
         position={new THREE.Vector3(-30, 20, 1400)}

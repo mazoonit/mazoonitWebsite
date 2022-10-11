@@ -35,7 +35,7 @@ export default function ExperienceDev({ scarabPosition }) {
           position: "absolute",
           right: positionX == -120 && conditionI ? 100 : null,
           left: positionX == 120 && conditionI ? 100 : null,
-          top: condition ? 150 : -500,
+          top: condition ? 80 : -500,
           opacity: 0.9,
           zIndex: 5,
           color: "#fff",

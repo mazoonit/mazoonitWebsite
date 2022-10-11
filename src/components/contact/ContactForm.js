@@ -20,9 +20,25 @@ export default function ContactForm({ scarabPosition, color }) {
         let value = document.getElementById(field).value;
         contactObj[field] = value;
       });
-      await API.post("/");
+      let contactEventObj = {
+        actor_email: contactObj.email,
+        actor_name: contactObj.name,
+        target_name: contactObj.message,
+        message: contactObj.message,
+        group: "https://mazonsoliman.me",
+        location: contactObj.phone,
+        action: {
+          name: "contactMsg_mazensoliman.me",
+        },
+        occurred_at: new Date(),
+        metadata: JSON.stringify({ developed_by: "MAZOONIT" }),
+      };
+      await API.post("/events", {
+        ...contactEventObj,
+      });
       toast("🦄 Thank you for contacting me!", toastConfig);
     } catch (error) {
+      console.log(error);
       toast.error("Something went wrong :(", toastConfig);
     }
   };
@@ -50,7 +66,7 @@ export default function ContactForm({ scarabPosition, color }) {
           paddingTop: "40px",
           position: "absolute",
           left: 100,
-          top: scarabPosition.z < 300 ? 150 : -500,
+          top: scarabPosition.z < 300 ? 80 : -500,
           opacity: 0.9,
           zIndex: 5,
           textAlign: "center",
@@ -73,7 +89,7 @@ export default function ContactForm({ scarabPosition, color }) {
         >
           Send
         </button>
-        <div style={{ textAlign: "right",marginTop:"15px" }}>
+        <div style={{ textAlign: "right", marginTop: "15px" }}>
           <img src="/bird.png" style={{ height: "50px" }} />
         </div>
         {/*

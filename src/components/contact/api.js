@@ -8,13 +8,8 @@ const request = axios.create({
   },
 });
 
-/*
 request.interceptors.request.use((config) => {
-  let token = localStorage.getItem("token");
-  if (token) {
-    config.headers["x-access-token"] = `${token}`;
-  }
+  config.headers["x_secret_key"] = "SECRET_KEY";
   return config;
 });
-*/
 export default request;

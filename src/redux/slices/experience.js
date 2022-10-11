@@ -10,8 +10,6 @@ export const experienceSlice = createSlice({
   initialState,
   reducers: {
     setExperience: (state, action) => {
-      console.log("hellodafuq");
-      console.log(action.payload);
       state.experience = { ...action.payload };
     },
   },

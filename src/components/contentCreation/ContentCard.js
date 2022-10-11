@@ -49,7 +49,7 @@ export default function ContentCard({ scarabPosition, color }) {
           paddingTop: "40px",
           position: "absolute",
           left: 100,
-          top: scarabPosition.z < 620 && scarabPosition.z > 480 ? 150 : -500,
+          top: scarabPosition.z < 620 && scarabPosition.z > 480 ? 80 : -500,
           opacity: 0.9,
           zIndex: 5,
           textAlign: "center",

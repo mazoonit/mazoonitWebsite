@@ -9,6 +9,7 @@ export const experiences = [
     positionX: 120,
     positionZ: 1200,
     color: color,
+    modelName:"nov21.glb",
     component: () => (
       <>
         <p>
@@ -43,6 +44,7 @@ export const experiences = [
     positionX: -120,
     positionZ: 1100,
     color: color,
+    modelName:"sep21.glb",
     component: () => (
       <>
         <p>
@@ -72,6 +74,7 @@ export const experiences = [
     positionX: 120,
     positionZ: 1000,
     color: color,
+    modelName:"aug20.glb",
     component: () => (
       <>
         <p>
@@ -106,6 +109,7 @@ export const experiences = [
     positionX: -120,
     positionZ: 900,
     color: color,
+    modelName:"dec19.glb",
     component: () => (
       <dev style={{ textAlign: "left" }}>
         <p>
@@ -131,6 +135,7 @@ export const experiences = [
     positionX: 120,
     positionZ: 800,
     color: color,
+    modelName:"jan19.glb",
     component: () => (
       <dev>
         <p>I had two major projects</p>
@@ -172,6 +177,7 @@ export const experiences = [
     positionX: -120,
     positionZ: 700,
     color: "#396EB0",
+    modelName:"aug17.glb",
     component: () => (
       <dev style={{ textAlign: "left" }}>
         <p>
