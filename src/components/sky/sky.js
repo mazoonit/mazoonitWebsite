@@ -16,6 +16,7 @@ export default function Sky() {
           <div class="comet"></div>
         </div>
       </div>
+      
       <embed
         src="/audio.mp3"
         loop="true"
@@ -23,6 +24,7 @@ export default function Sky() {
         width="2"
         height="0"
       />
+      
     </div>
   );
 }

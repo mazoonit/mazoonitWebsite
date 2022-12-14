@@ -259,7 +259,7 @@ function CanvasBased({ loading }) {
             id="introDiv"
           >
             <a
-              href={"https://167.99.205.232:7070/resume"}
+              href={"https://mazensoliman.me/resume.pdf"}
               target="_blank"
               style={{
                 display: "block",
